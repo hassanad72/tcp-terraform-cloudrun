@@ -61,3 +61,11 @@ iam_role = {
     service_account_key = "cloud_run"
   }
 }
+
+service_name = "gcp-ai-dev"
+
+min_instances = 0
+
+max_instances = 3
+
+image = "us-docker.pkg.dev/cloudrun/container/hello"

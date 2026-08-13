@@ -32,10 +32,16 @@ module "iam" {
   depends_on = [module.project_services]
 }
 
-module "cloud-run" {
+module "cloud_run" {
   source = "../modules/cloud-run"
 
-  
+  project_id      = var.project_id
+  location        = var.region
+  service_name    = var.service_name
+  image           = var.image
+  min_instances   = var.min_instances
+  max_instances   = var.max_instances
+  service_account = module.iam.service_account_emails["cloud_run"]
 
-
+  invoker_members = ["allUsers"]
 }

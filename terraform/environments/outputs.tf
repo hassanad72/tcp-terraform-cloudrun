@@ -37,3 +37,18 @@ output "service_account_members" {
   description = "Dev service account IAM member strings keyed by their input map keys."
   value       = module.iam.service_account_members
 }
+
+output "cloud_run_service_name" {
+  description = "Name of the dev Cloud Run service."
+  value       = module.cloud_run.service_name
+}
+
+output "cloud_run_service_uri" {
+  description = "URI of the dev Cloud Run service."
+  value       = module.cloud_run.service_uri
+}
+
+output "cloud_run_latest_ready_revision" {
+  description = "Latest Cloud Run revision ready to serve traffic."
+  value       = module.cloud_run.latest_ready_revision
+}

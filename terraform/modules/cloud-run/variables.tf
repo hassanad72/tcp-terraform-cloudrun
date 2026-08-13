@@ -100,3 +100,10 @@ variable "environment_variables" {
   type        = map(string)
   default     = {}
 }
+
+variable "invoker_members" {
+  description = "Whether unathenticated users can invoke the cloud run app"
+  type = set(string)
+  default = []
+  
+}

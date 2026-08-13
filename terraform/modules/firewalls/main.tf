@@ -8,13 +8,13 @@ resource "google_compute_firewall" "firewall" {
   priority    = each.value.priority
   disabled    = each.value.disabled
 
-  source_ranges      = each.value.source_ranges
-  destination_ranges = each.value.destination_ranges
-  source_tags        = each.value.source_tags
-  target_tags        = each.value.target_tags
+  source_ranges      = length(each.value.source_ranges) > 0 ? each.value.source_ranges : null
+  destination_ranges = length(each.value.destination_ranges) > 0 ? each.value.destination_ranges : null
+  source_tags        = length(each.value.source_tags) > 0 ? each.value.source_tags : null
+  target_tags        = length(each.value.target_tags) > 0 ? each.value.target_tags : null
 
-  source_service_accounts = each.value.source_service_accounts
-  target_service_accounts = each.value.target_service_accounts
+  source_service_accounts = length(each.value.source_service_accounts) > 0 ? each.value.source_service_accounts : null
+  target_service_accounts = length(each.value.target_service_accounts) > 0 ? each.value.target_service_accounts : null
 
   dynamic "allow" {
     for_each = each.value.allow

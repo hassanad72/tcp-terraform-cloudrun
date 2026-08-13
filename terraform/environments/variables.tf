@@ -93,3 +93,22 @@ variable "iam_role" {
 
   default = {}
 }
+
+variable "service_name" {
+  type = string
+}
+
+
+
+variable "min_instances" {
+  type = number
+}
+
+variable "max_instances" {
+  type = number
+}
+
+variable "image" {
+  type = string
+}
+
