@@ -51,10 +51,10 @@ resource "google_cloud_run_v2_service" "cloud_run" {
 resource "google_cloud_run_v2_service_iam_member" "invoker" {
   for_each = var.invoker_members
 
-  project = google_cloud_run_v2_service.cloud_run.project
+  project  = google_cloud_run_v2_service.cloud_run.project
   location = google_cloud_run_v2_service.cloud_run.location
-  name = google_cloud_run_v2_service.cloud_run.name
+  name     = google_cloud_run_v2_service.cloud_run.name
 
-  role = "roles/run.invoker"
+  role   = "roles/run.invoker"
   member = each.value
 }

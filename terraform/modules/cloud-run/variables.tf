@@ -103,7 +103,7 @@ variable "environment_variables" {
 
 variable "invoker_members" {
   description = "Whether unathenticated users can invoke the cloud run app"
-  type = set(string)
-  default = []
-  
+  type        = set(string)
+  default     = []
+
 }
