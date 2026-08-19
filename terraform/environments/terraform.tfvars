@@ -61,6 +61,11 @@ iam_role = {
     role                = "roles/storage.objectViewer"
     service_account_key = "cloud_run"
   }
+
+  cloud_run_vertex_ai_user = {
+    role                = "roles/aiplatform.user"
+    service_account_key = "cloud_run"
+  }
 }
 
 service_name = "gcp-ai-dev"
