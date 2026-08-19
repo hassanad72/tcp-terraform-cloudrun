@@ -69,3 +69,16 @@ min_instances = 0
 max_instances = 3
 
 image = "us-docker.pkg.dev/cloudrun/container/hello"
+
+artificat_repositories = {
+  "cloud_run_container" = {
+    repository_id = "gap-dev-images"
+    description   = "repo for our cloud run application"
+    format        = "DOCKER"
+    labels = {
+      environment = "dev"
+      managed_by  = "terraform"
+    }
+    immutable_tags = false
+  }
+}

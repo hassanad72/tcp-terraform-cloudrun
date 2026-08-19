@@ -52,3 +52,13 @@ output "cloud_run_latest_ready_revision" {
   description = "Latest Cloud Run revision ready to serve traffic."
   value       = module.cloud_run.latest_ready_revision
 }
+
+output "artifact_repository_names" {
+  description = "Artifact Registry repository names keyed by their input map keys."
+  value       = module.artifact_registry.repository_names
+}
+
+output "artifact_repository_locations" {
+  description = "Artifact Registry repository locations keyed by their input map keys."
+  value       = module.artifact_registry.repository_locations
+}

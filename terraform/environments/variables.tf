@@ -112,3 +112,13 @@ variable "image" {
   type = string
 }
 
+variable "artificat_repositories" {
+  type = map(object({
+    repository_id  = string
+    description    = string
+    format         = string
+    labels         = optional(map(string), null)
+    immutable_tags = optional(bool, false)
+
+  }))
+}

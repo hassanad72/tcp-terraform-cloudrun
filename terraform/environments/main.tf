@@ -45,3 +45,13 @@ module "cloud_run" {
 
   invoker_members = ["allUsers"]
 }
+
+module "artifact_registry" {
+  source = "../modules/artificat-registry"
+
+  project_id = var.project_id
+  location   = var.region
+  repo       = var.artificat_repositories
+
+  depends_on = [module.project_services]
+}
