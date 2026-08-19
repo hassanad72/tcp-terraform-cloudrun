@@ -2,6 +2,7 @@ project_id = "gap-dev-ai"
 region     = "us-east1"
 
 services = [
+  "aiplatform.googleapis.com",
   "artifactregistry.googleapis.com",
   "compute.googleapis.com",
   "iam.googleapis.com",

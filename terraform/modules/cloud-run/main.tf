@@ -41,6 +41,10 @@ resource "google_cloud_run_v2_service" "cloud_run" {
   }
 
   lifecycle {
+    ignore_changes = [
+      template[0].containers[0].image,
+    ]
+
     precondition {
       condition     = var.max_instances >= var.min_instances
       error_message = "max_instances must be greater than or equal to min_instances."
