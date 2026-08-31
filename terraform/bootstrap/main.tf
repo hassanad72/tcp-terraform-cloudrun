@@ -13,6 +13,7 @@ module "workload_identity" {
     "roles/serviceusage.serviceUsageAdmin",
     "roles/compute.securityAdmin",
     "roles/iam.serviceAccountUser",
+    "roles/aiplatform.user",
   ]
 }
 

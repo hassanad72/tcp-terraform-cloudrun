@@ -4,12 +4,16 @@ on:
   pull_request:
     paths:
       - "terraform/**"
+      - "ai/**"
+      - "platform-standards/**"
       - ".github/workflows/terraform.yml"
   push:
     branches:
       - main
     paths:
       - "terraform/**"
+      - "ai/**"
+      - "platform-standards/**"
       - ".github/workflows/terraform.yml"
   workflow_dispatch:
     inputs:
@@ -68,6 +72,29 @@ jobs:
       - name: Create Terraform plan
         working-directory: ${{ env.TF_WORKING_DIR }}
         run: terraform plan -input=false -out=tfplan
+
+      - name: Set up Python for AI reviewer
+        if: github.event_name == 'pull_request'
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: "pip"
+          cache-dependency-path: ai/requirements.txt
+
+      - name: Install AI reviewer dependencies
+        if: github.event_name == 'pull_request'
+        run: python -m pip install -r ai/requirements.txt
+
+      - name: Export Terraform plan as JSON
+        if: github.event_name == 'pull_request'
+        working-directory: ${{ env.TF_WORKING_DIR }}
+        run: terraform show -json tfplan > tfplan.json
+
+      - name: Run Terraform AI reviewer
+        if: github.event_name == 'pull_request'
+        env:
+          GOOGLE_CLOUD_PROJECT: ${{ vars.GCP_PROJECT_ID }}
+        run: python ai/main.py "${{ env.TF_WORKING_DIR }}/tfplan.json"
 
       - name: Upload Terraform plan
         if: github.event_name == 'workflow_dispatch' && inputs.apply
