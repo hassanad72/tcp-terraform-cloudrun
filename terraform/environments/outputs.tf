@@ -62,3 +62,8 @@ output "artifact_repository_locations" {
   description = "Artifact Registry repository locations keyed by their input map keys."
   value       = module.artifact_registry.repository_locations
 }
+
+output "storage_bucket_urls" {
+  description = "Cloud Storage bucket URLs keyed by their input map keys."
+  value       = module.storage.bucket_urls
+}

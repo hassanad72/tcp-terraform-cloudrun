@@ -122,3 +122,16 @@ variable "artificat_repositories" {
 
   }))
 }
+
+variable "storage_buckets" {
+  description = "Cloud Storage buckets created in this environment."
+
+  type = map(object({
+    name               = string
+    location           = string
+    storage_class      = optional(string, "STANDARD")
+    force_destroy      = optional(bool, false)
+    versioning_enabled = optional(bool, true)
+    labels             = optional(map(string), {})
+  }))
+}

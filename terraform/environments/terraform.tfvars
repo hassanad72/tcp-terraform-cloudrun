@@ -88,3 +88,16 @@ artificat_repositories = {
     immutable_tags = false
   }
 }
+
+storage_buckets = {
+  "platform_standards" = {
+    name     = "gap-dev-platform-standards"
+    location = "US"
+
+    labels = {
+      environment = "dev"
+      managed_by  = "terraform"
+      purpose     = "rag-documents"
+    }
+  }
+}
