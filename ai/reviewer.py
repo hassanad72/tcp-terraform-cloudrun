@@ -60,8 +60,10 @@ def get_vertex_client():
 
 
 def generate_review(review_request):
-    response = get_vertex_client().models.generate_content(
-        model=MODEL_NAME,
-        contents=review_request,
-    )
+    with get_vertex_client() as client:
+        response = client.models.generate_content(
+            model=MODEL_NAME,
+            contents=review_request,
+        )
+
     return response.text or "No review text was returned."

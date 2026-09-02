@@ -14,6 +14,7 @@ module "workload_identity" {
     "roles/compute.securityAdmin",
     "roles/iam.serviceAccountUser",
     "roles/aiplatform.user",
+    "roles/storage.admin",
   ]
 }
 

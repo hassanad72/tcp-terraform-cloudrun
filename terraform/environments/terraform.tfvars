@@ -72,7 +72,7 @@ service_name = "gcp-ai-dev"
 
 min_instances = 0
 
-max_instances = 3
+max_instances = 4
 
 image = "us-docker.pkg.dev/cloudrun/container/hello"
 
@@ -86,5 +86,18 @@ artificat_repositories = {
       managed_by  = "terraform"
     }
     immutable_tags = false
+  }
+}
+
+storage_buckets = {
+  "platform_standards" = {
+    name     = "gap-dev-platform-standards"
+    location = "US"
+
+    labels = {
+      environment = "dev"
+      managed_by  = "terraform"
+      purpose     = "rag-documents"
+    }
   }
 }

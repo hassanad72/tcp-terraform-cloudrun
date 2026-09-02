@@ -55,3 +55,9 @@ module "artifact_registry" {
 
   depends_on = [module.project_services]
 }
+
+module "storage" {
+  source     = "../modules/storage"
+  project_id = var.project_id
+  buckets    = var.storage_buckets
+}
