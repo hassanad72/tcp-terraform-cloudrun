@@ -72,7 +72,7 @@ service_name = "gcp-ai-dev"
 
 min_instances = 0
 
-max_instances = 3
+max_instances = 4
 
 image = "us-docker.pkg.dev/cloudrun/container/hello"
 
