@@ -7,9 +7,7 @@ from google.genai import types
 
 
 AI_DIRECTORY = Path(__file__).resolve().parent
-REPOSITORY_ROOT = AI_DIRECTORY.parent
 PROMPT_PATH = AI_DIRECTORY / "prompts" / "terraform_review.md"
-STANDARDS_PATH = REPOSITORY_ROOT / "platform-standards" / "terraform.md"
 MODEL_NAME = "gemini-2.5-flash"
 VERTEX_AI_LOCATION = "global"
 
@@ -18,13 +16,11 @@ def load_text_file(file_path):
     return file_path.read_text(encoding="utf-8")
 
 
-def load_reviewer_context():
-    prompt = load_text_file(PROMPT_PATH)
-    standards = load_text_file(STANDARDS_PATH)
-    return prompt, standards
+def load_reviewer_prompt():
+    return load_text_file(PROMPT_PATH)
 
 
-def build_review_request(prompt, standards, resource_changes):
+def build_review_request(prompt, retrieved_standards, resource_changes):
     plan_json = json.dumps(
         {"resource_changes": resource_changes},
         indent=2,
@@ -33,7 +29,7 @@ def build_review_request(prompt, standards, resource_changes):
     return f"""{prompt}
 
 <platform_standards>
-{standards}
+{retrieved_standards}
 </platform_standards>
 
 <terraform_plan>
