@@ -54,7 +54,7 @@ def parse_args() -> argparse.Namespace:
         default=os.environ.get("GOOGLE_CLOUD_PROJECT"),
         help="Google Cloud project ID. Defaults to GOOGLE_CLOUD_PROJECT.",
     )
-    parser.add_argument("--location", default="us-east1")
+    parser.add_argument("--location", default="us-central1")
     parser.add_argument(
         "--display-name",
         default="gap-dev-platform-standards",
