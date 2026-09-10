@@ -94,6 +94,7 @@ jobs:
         if: github.event_name == 'pull_request'
         env:
           GOOGLE_CLOUD_PROJECT: ${{ vars.GCP_PROJECT_ID }}
+          RAG_CORPUS_NAME: ${{ vars.RAG_CORPUS_NAME }}
         run: python ai/main.py "${{ env.TF_WORKING_DIR }}/tfplan.json"
 
       - name: Upload Terraform plan

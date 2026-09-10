@@ -9,6 +9,7 @@ services = [
   "logging.googleapis.com",
   "monitoring.googleapis.com",
   "run.googleapis.com",
+  "vectorsearch.googleapis.com",
 ]
 
 vpc_name     = "gap-dev-vpc"
